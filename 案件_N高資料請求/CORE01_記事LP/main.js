@@ -15,7 +15,7 @@
 
   /* ---------- CTAクリック計測 ----------
      クリック時に、ボタンの位置（data-cta）を計測ツールへ送る。
-     ASP URLの全文はAnalyticsに送らない（cta_position / cta_type / cta_text のみ）。
+     ASP URLの全文はAnalyticsに送らない（lp_id / cta_position / cta_type / cta_text のみ）。
        - "dataLayer"：GTM経由（GTMで「cta_click」イベントをトリガーにGA4へ）
        - "gtag"     ：gtag.js を直接使っている場合
      両方同時に送ると二重計測になるので、どちらか1つにする。 */
@@ -24,6 +24,7 @@
 
   var track = function (a) {
     var params = {
+      lp_id: document.body.getAttribute("data-lp") || "core01", // どのLPか（core01 / cp01_compare / cp02_fee / cp04_select）
       cta_position: a.getAttribute("data-cta"), // fv / check / timeline / conclusion / final / sticky
       cta_type: a.getAttribute("data-cta-type") || "button",
       cta_text: (a.textContent || "").replace(/\s+/g, " ").trim()
