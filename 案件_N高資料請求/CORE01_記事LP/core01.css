@@ -10,7 +10,7 @@
   --mt-blue: #1f3a5c;       /* ネイビー：見出し帯・番号など */
   --mt-blue-2: #1e5aa0;     /* アクセント：CTAボタン・リンク */
   --mt-blue-bg: #eef2f7;    /* 淡いブルーグレー */
-  --mt-mark: #f5e9c4;       /* マーカーは淡いクリーム */
+  --mt-mark: #ffe88a;       /* マーカー：明るいが蛍光ではない黄色。使う場所は5カ所に限定 */
   --mt-yellow-bg: #f8f6ef;
   --mt-orange: #6b7f99;     /* 旧オレンジ系の用途はブルーグレーに置き換え */
   --mt-red: #a8322d;        /* 赤は注意ラベルだけに使う */
@@ -19,7 +19,8 @@
   --c1-green-bg: #eaf7f2;
   --c1-line: #e1e6ed;
   --c1-bg: #f5f7fa;
-  --c1-pick: #faf5e4;
+  --c1-pick: #fff6d1;       /* 結論・決め手に使う淡い黄色 */
+  --c1-pick-strong: #ffe9a3;
   --c1-shadow: 0 1px 6px rgba(20, 40, 80, .07);
 }
 *, *::before, *::after { box-sizing: border-box; }
@@ -121,13 +122,14 @@ b, strong { font-weight: 700; }
 .c1-table thead th:first-child { vertical-align: bottom; }
 @media (min-width: 768px) { .c1-table thead th img { max-width: 170px; } }
 
-/* ③の行だけ薄く強調（N高の列全体は強調しない） */
+/* ③の行（今回の決め手）だけ強調。N高の列全体は強調しない */
 .c1-table tr.is-key td { background: var(--c1-pick); }
-.c1-table tr.is-key th { background: #efe6c8; }
-.c1-table tr.is-key b { color: var(--mt-blue); }
+.c1-table tr.is-key th { background: var(--c1-pick-strong); color: var(--mt-blue); }
+.c1-table tr.is-key td:nth-child(2) { box-shadow: inset 3px 0 0 var(--mt-blue); }
+.c1-table tr.is-key b { color: #13294a; font-weight: 800; }
 
 /* ③の見出しと詳細カード */
-.c1-keyttl { margin-top: 1.6em; }
+.c1-keyttl { margin: 1.8em 0 .8em; padding: .7em .9em; border-left: 4px solid var(--mt-blue); background: #fffaea; font-size: 18px; font-weight: 800; line-height: 1.55; color: #13294a; }
 .c1-keycard dd p { margin: 0 0 .5em; font-size: 14px; line-height: 1.6; }
 .c1-keycard dd .c1-note__table { margin: 0 0 .5em; font-size: 13px; background: #fff; }
 .c1-keycard dd .c1-note__table td { width: 6.5em; }
@@ -152,7 +154,9 @@ b, strong { font-weight: 700; }
 .c1-keycard dl > div:first-child { border-top: 0; }
 .c1-keycard dt { font-size: 13px; font-weight: 700; color: #555; line-height: 1.55; }
 .c1-keycard dd { margin: 0; font-size: 14px; line-height: 1.6; }
-.c1-keycard .is-pick { background: var(--c1-pick); }
+.c1-keycard .is-pick { background: var(--c1-pick); box-shadow: inset 0 0 0 2px var(--mt-blue); border-radius: 8px 8px 0 0; }
+.c1-keycard .c1-keycard__lead { font-weight: 800; color: #13294a; }
+.c1-keycard .is-pick .c1-note__table td { font-size: 15px; font-weight: 800; color: var(--mt-blue); }
 .c1-keycard .is-pick dt { color: var(--mt-blue); }
 
 @media (min-width: 768px) {
@@ -337,4 +341,5 @@ b, strong { font-weight: 700; }
 .mt-conclusion { border: 1px solid #cfd8e3; background: #f5f8fb; }
 .mt-conclusion__ttl { color: var(--mt-blue); }
 .mt-oneline span { background: none; color: var(--mt-blue); }
+.mt-oneline.c1-oneline--key span { background: linear-gradient(transparent 55%, var(--mt-mark) 55%); color: #13294a; }
 .mt-h2 { letter-spacing: .01em; }
