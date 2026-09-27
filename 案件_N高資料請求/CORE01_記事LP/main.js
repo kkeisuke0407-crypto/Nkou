@@ -24,8 +24,8 @@
 
   var track = function (a) {
     var params = {
-      lp_id: document.body.getAttribute("data-lp") || "core01", // どのLPか（core01 / cp01_compare / cp02_fee / cp04_select）
-      cta_position: a.getAttribute("data-cta"), // fv / check / timeline / conclusion / final / sticky
+      lp_id: document.body.getAttribute("data-lp") || "core01", // どのLPか（core01 / cp01_compare … / ポートフォリオLPは pf_cp01_ranking など）
+      cta_position: a.getAttribute("data-cta"), // fv / check / timeline / conclusion / rank1 / life / fee_example / answer / nkou_detail / final / sticky など
       cta_type: a.getAttribute("data-cta-type") || "button",
       cta_text: (a.textContent || "").replace(/\s+/g, " ").trim()
     };
@@ -74,10 +74,10 @@
   }
 
   /* ---------- SP固定CTA ----------
-     3校比較（#compare）を読み始めたら表示。
+     data-sticky-start を付けた要素（なければ3校比較 #compare）を読み始めたら表示。
      本文のCTAボタンや最終CTAが画面に見えている間は隠して、二重表示にしない。 */
   var sticky = document.querySelector("[data-sticky]");
-  var start = document.getElementById("compare");
+  var start = document.querySelector("[data-sticky-start]") || document.getElementById("compare");
   if (sticky && start && "IntersectionObserver" in window) {
     var passedStart = false;
     var visibleCtas = 0;

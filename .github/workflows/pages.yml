@@ -1,6 +1,7 @@
 # CORE01 記事LP を GitHub Pages（https://nko.hakobu-family.com/）へ公開する
 # main への push で、LPのファイルだけを _site に集めてデプロイする。
-# 橋掛けLP（/nkou/fee/ など）は build.mjs が最新のCORE01本文から毎回組み立てる。
+# 橋掛けLP（/nkou/fee/ など）は build.mjs が最新のCORE01本文から毎回組み立てる（旧設計・公開中）。
+# ポートフォリオLP（/pf/ 以下）は ポートフォリオLP/build.mjs が毎回組み立てる（Stage12・確認用）。
 # （IMPLEMENTATION_NOTES.md や調査資料・スクリプトは公開しない）
 name: Deploy LP to Pages
 
@@ -39,6 +40,10 @@ jobs:
         run: |
           node "案件_N高資料請求/橋掛けLP/build.mjs" --deploy _site
           find _site -type f | sort
+      - name: Build portfolio LPs (/pf/cp01/, /pf/cp02-fee/, /pf/cp04-schooling/)
+        run: |
+          node "案件_N高資料請求/ポートフォリオLP/build.mjs" --deploy _site
+          find _site/pf -type f | sort
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact

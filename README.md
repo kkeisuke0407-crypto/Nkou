@@ -32,3 +32,6 @@ Claude初稿指示：
 - 橋掛けLP（検索意図別の冒頭＋CORE01共通本文）：`案件_N高資料請求/橋掛けLP/`（README参照）
   - CP02 学費 /nkou/fee/ ・ CP01 王道 /nkou/compare/ ・ CP04 選び方 /nkou/select/（CP03 競合KWは設計のみ）
 
+- ポートフォリオLP（Stage12・ポートフォリオごとに骨格を変える新設計）：`案件_N高資料請求/ポートフォリオLP/`（README参照）
+  - CP01 王道ランキング /pf/cp01/ ・ CP02 学費 /pf/cp02-fee/ ・ CP04 スクーリングとは /pf/cp04-schooling/（CP03 競合KWは設計のみ）
+  - 設計：`案件_N高資料請求/Stage12_ポートフォリオLP再設計/`。上の橋掛けLPは旧設計（切り替えまで公開中）
