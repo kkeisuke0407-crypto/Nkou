@@ -7,15 +7,7 @@
 /* 橋掛けLPのH1はCORE01より文字数が多いので、375pxで1行が変に折れないよう少し小さくする */
 body[data-lp] .c1-fv__title { font-size: clamp(19px, 5.6vw, 26px); }
 
-/* FV内の小見出し */
-.b-sub { margin: 1.2em 0 .6em; font-size: 16.5px; font-weight: 700; line-height: 1.5; color: var(--mt-blue); }
 
-/* 3つのポイント（CP02） */
-.b-points { display: grid; gap: 8px; margin: 0 0 1em; padding: 0; list-style: none; counter-reset: bpoint; }
-.b-points li { position: relative; padding: 10px 12px 10px 2.9em; border: 1px solid var(--c1-line); border-radius: 10px; background: #fff; }
-.b-points li::before { counter-increment: bpoint; content: counter(bpoint); position: absolute; left: .8em; top: 11px; display: grid; place-items: center; width: 1.6em; height: 1.6em; border-radius: 50%; background: var(--mt-blue); color: #fff; font-size: 13px; font-weight: 700; }
-.b-points p { margin: 0 !important; font-size: 14.5px; line-height: 1.7; }
-.b-points .b-points__ttl { margin-bottom: .1em !important; font-size: 15.5px; font-weight: 700; color: var(--mt-blue); }
 
 /* 学費の先出し（CP02） */
 .b-fee { margin: 0 0 1.2em; padding: 12px 14px; border-radius: 10px; background: var(--c1-bg); }
@@ -30,20 +22,7 @@ body[data-lp] .c1-fv__title { font-size: clamp(19px, 5.6vw, 26px); }
 .b-fee .b-fee__note { font-size: 12.5px; font-weight: 700; line-height: 1.6; color: #3a4656; }
 .b-fee .b-fee__more a { color: var(--mt-blue-2); font-weight: 700; }
 
-/* 選び方の3つの問い（CP04） */
-.b-questions { display: grid; gap: 8px; margin: 12px 0 1em; padding: 0; list-style: none; counter-reset: bq; }
-.b-questions li { position: relative; padding: 10px 12px 10px 2.9em; border: 1px solid var(--c1-line); border-radius: 10px; background: #fff; line-height: 1.5; }
-.b-questions li::before { counter-increment: bq; content: counter(bq); position: absolute; left: .8em; top: 50%; transform: translateY(-50%); display: grid; place-items: center; width: 1.6em; height: 1.6em; border-radius: 50%; background: var(--mt-blue); color: #fff; font-size: 13px; font-weight: 700; }
-.b-questions li:last-child { border: 2px solid var(--mt-blue-2); background: #f3f7fc; }
-.b-questions li:last-child::before { background: var(--mt-blue-2); }
-.b-questions b { display: block; font-size: 16px; }
-.b-questions span { display: block; font-size: 13px; color: var(--mt-sub); }
 
 /* CORE01本文へのつなぎの一文 */
 .b-next { margin: 1.2em 0 .4em !important; padding: .8em 1em; border-left: 4px solid var(--mt-blue); background: var(--mt-blue-bg); font-size: 15px; font-weight: 700; line-height: 1.7; color: var(--mt-blue); }
 
-@media (min-width: 768px) {
-  .b-points { grid-template-columns: repeat(3, 1fr); }
-  .b-questions { grid-template-columns: repeat(3, 1fr); }
-  .b-questions li::before { top: 11px; transform: none; }
-}
