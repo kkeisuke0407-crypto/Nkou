@@ -1,0 +1,74 @@
+/* ============================================================
+   ポートフォリオLP（Stage12）追加スタイル
+   ベース：CORE01_記事LP/parts.css（mt-*）＋ core01.css（配色トークン・FV・比較表・生徒の声など）。
+   ここには「既存パーツでは表現できないレイアウト調整・画像トリミング」だけを置く。
+   新しいカードUIは作らない。
+   ============================================================ */
+
+/* ---------- パーツの調整 ---------- */
+/* 特徴リスト（mt-points）：core01.css は①〜⑤の番号つきリスト用に点を消しているので、
+   番号のないリストでは parts.css どおりの点に戻す。番号つきは .c1-points--num */
+.mt-points li { padding-left: 1.3em; }
+.mt-points li::before { content: ""; background: var(--mt-blue-2); }
+.mt-points.c1-points--num li { padding-left: 0; }
+.mt-points.c1-points--num li::before { content: none; }
+
+/* 順位ラベル（mt-h3__rank）：メダル・金銀銅は使わず、3校とも同じネイビーの小さなラベル */
+.mt-h3__rank { display: inline-block; margin-right: .45em; padding: .05em .5em; border-radius: 3px; background: var(--mt-blue); color: #fff; font-size: .78em; line-height: 1.5; vertical-align: .12em; white-space: nowrap; }
+.mt-h3[id^="rank"] { margin-top: 2.4em; scroll-margin-top: 12px; }
+
+/* ---------- ランキングTOP3一覧（mt-table）：375pxで横スクロールなしに収める ---------- */
+.c1-rank { min-width: 0; width: 100%; table-layout: fixed; font-size: 13px; }
+.c1-rank th, .c1-rank td { position: static; padding: .55em .45em; text-align: left; vertical-align: middle; border-color: var(--c1-line); }
+.c1-rank thead th, .c1-rank thead th:first-child { background: var(--mt-blue); color: #fff; font-size: 12px; white-space: nowrap; }
+.c1-rank th:first-child, .c1-rank td:first-child { width: 3.9em; min-width: 0; text-align: center; background: #fff; }
+.c1-rank th:nth-child(2), .c1-rank td:nth-child(2) { width: 10.2em; }
+.c1-rank .mt-h3__rank { margin: 0; font-size: 12px; }
+.c1-rank .mt-name { color: var(--mt-blue-2); font-size: 13px; }
+.c1-rank tr.is-pick td, .c1-rank tr.is-pick td:first-child { background: var(--c1-pick); }
+
+/* ---------- 各校の基本情報（mt-table を縦の項目表として使う） ---------- */
+.c1-spec { min-width: 0; width: 100%; margin: 0 0 .5em; font-size: 14px; line-height: 1.6; }
+.c1-spec th, .c1-spec td { position: static; padding: .6em .6em; text-align: left; vertical-align: top; border-color: var(--c1-line); }
+.c1-spec th, .c1-spec th:first-child { width: 6.8em; min-width: 0; background: var(--mt-blue-bg); color: var(--mt-blue); font-size: 13px; font-weight: 700; }
+.c1-spec b { color: #13294a; }
+.c1-spec__note { display: block; margin-top: .2em; font-size: 12px; font-weight: 700; line-height: 1.5; color: #3a4656; }
+
+/* ---------- 画像 ---------- */
+/* N高の公式バナー（正方形・文字入り）：mt-banner の枠に入れ、切らずに中央へ */
+.c1-banner--square { width: 200px; max-width: 60%; margin: .6em auto 1em; }
+.c1-banner--square img { display: block; width: 100%; height: auto; border-radius: 8px; box-shadow: var(--c1-shadow); }
+/* 2位・3位の校舎写真（CC BY-SA）：16:9に切り、看板・校名表示が入る位置に合わせる */
+.c1-school-photo { margin: .6em 0 .3em; }
+.c1-school-photo img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; object-position: 50% 72%; border-radius: 4px; }
+.c1-school-photo--daiichi img { object-position: 50% 42%; }
+.c1-credit { margin: 0 0 1em !important; font-size: 11px !important; }
+.c1-credit a { color: var(--mt-sub); }
+/* コース説明図（文字入り）：切らずに元の比率で */
+.c1-course { margin: 0 0 1.1em; }
+.c1-course img { display: block; width: 100%; border-radius: 6px; background: #eef5fc; }
+.c1-course figcaption { margin-top: .4em; font-size: 14.5px; line-height: 1.7; }
+.c1-course figcaption b { color: var(--mt-blue); }
+/* CP04 FV：本校の写真（元2.5:1）を通学写真と同じ3:1の枠に */
+.c1-fv__half--okinawa img { aspect-ratio: 3 / 1; object-position: 50% 55%; }
+/* CP04 スクーリング教室の写真（元1:1・320px）：拡大しすぎないよう16:9に */
+.c1-img-schooling-wide { aspect-ratio: 16 / 9; object-fit: cover; object-position: 50% 45%; }
+/* 最終CTAのバナー */
+.c1-final-banner { margin: 0 auto .6em; width: 160px; max-width: 50%; line-height: 0; }
+.c1-final-banner img { display: block; width: 100%; height: auto; border-radius: 8px; box-shadow: var(--c1-shadow); }
+
+/* 数字の強調（mt-oneline の中の大きな数字）：進路決定率など、根拠つきの実数だけに使う */
+.c1-oneline--num span { font-size: 30px; letter-spacing: .01em; }
+
+/* ---------- 余白 ---------- */
+#final { margin-top: 2.4em; text-align: center; }
+#final .mt-h2 { text-align: left; }
+#final .mt-textlink { text-align: center; }
+.mt-conclusion .mt-conclusion__ttl { color: var(--mt-red); }
+
+@media (min-width: 768px) {
+  .c1-rank th:nth-child(2), .c1-rank td:nth-child(2) { width: 11em; }
+  .c1-school-photo img { max-width: 560px; margin-inline: auto; }
+  .c1-course { display: grid; grid-template-columns: 260px 1fr; gap: 14px; align-items: center; }
+  .c1-course figcaption { margin: 0; }
+}
