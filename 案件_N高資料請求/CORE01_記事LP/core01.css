@@ -81,14 +81,6 @@ b, strong { font-weight: 700; }
 .c1-stat__src { margin: .3em 0 0 !important; font-size: 11.5px; line-height: 1.55; color: var(--mt-sub); }
 
 /* ============ 比較ポイント ============ */
-.c1-axes { display: grid; gap: 8px; margin: 0 0 1.2em; padding: 0; list-style: none; }
-.c1-axes li { position: relative; padding: .7em .9em .7em 3.1em; border: 1px solid var(--c1-line); border-radius: 10px; background: #fff; line-height: 1.5; }
-.c1-axes li b { display: block; font-size: 16px; }
-.c1-axes li small { display: block; font-size: 12.5px; color: var(--mt-sub); }
-.c1-axes__no { position: absolute; left: .8em; top: 50%; transform: translateY(-50%); display: grid; place-items: center; width: 1.8em; height: 1.8em; border-radius: 50%; background: var(--mt-blue); color: #fff; font-size: 14px; font-weight: 900; }
-.c1-axes li.is-key { border: 2px solid var(--mt-blue-2); background: #f3f7fc; }
-.c1-axes li.is-key small { color: var(--mt-blue-2); font-weight: 700; }
-.c1-axes li.is-key .c1-axes__no { background: var(--mt-blue-2); }
 
 /* ============ 3校比較（SPはカード。巨大テーブルにしない） ============ */
 
@@ -128,36 +120,8 @@ b, strong { font-weight: 700; }
 .c1-table tr.is-key td:nth-child(2) { box-shadow: inset 3px 0 0 var(--mt-blue); }
 .c1-table tr.is-key b { color: #13294a; font-weight: 800; }
 
-/* ③の見出しと詳細カード */
-.c1-keyttl { margin: 1.8em 0 .8em; padding: .7em .9em; border-left: 4px solid var(--mt-blue); background: #fffaea; font-size: 18px; font-weight: 800; line-height: 1.55; color: #13294a; }
-.c1-keycard dd p { margin: 0 0 .5em; font-size: 14px; line-height: 1.6; }
-.c1-keycard dd .c1-note__table { margin: 0 0 .5em; font-size: 13px; background: #fff; }
-.c1-keycard dd .c1-note__table td { width: 6.5em; }
-.c1-keycard .c1-keycard__note { margin: 0 !important; font-size: 12.5px; color: #3a4656; }
 
-/* 生徒の声：写真 → 属性 → 要約。写真は元の比率（約5:3）のまま */
-.c1-voices { display: grid; gap: 14px; margin: 0 0 .8em; }
-.c1-voice { margin: 0; border: 1px solid var(--c1-line); border-radius: 10px; background: #fff; overflow: hidden; }
-.c1-voice img { display: block; width: 100%; max-width: 100%; height: auto; aspect-ratio: 640 / 382; object-fit: cover; }
-.c1-voice figcaption { padding: 10px 12px 12px; }
-.c1-voice figcaption p { margin: 0 0 .3em; font-size: 14px; line-height: 1.7; }
-.c1-voice .c1-voice__who { font-size: 12.5px; font-weight: 700; color: var(--mt-blue); }
-.c1-voice .c1-voice__who small { font-weight: 400; color: var(--mt-sub); }
-.c1-voice .c1-voice__src { margin: .4em 0 0 !important; font-size: 11.5px !important; color: var(--mt-sub); }
-.c1-voice .c1-voice__ttl { font-size: 15.5px; font-weight: 700; line-height: 1.5; }
-@media (min-width: 768px) { .c1-voices { grid-template-columns: repeat(3, 1fr); } }
 
-/* ③の詳細カード */
-.c1-keycard { margin: 0 0 1em; border: 2px solid var(--mt-blue-2); border-radius: 10px; background: #fff; overflow: hidden; }
-.c1-keycard dl { margin: 0; }
-.c1-keycard dl > div { display: grid; grid-template-columns: 5.2em 1fr; gap: .6em; padding: .6em .8em; border-top: 1px solid var(--c1-line); }
-.c1-keycard dl > div:first-child { border-top: 0; }
-.c1-keycard dt { font-size: 13px; font-weight: 700; color: #555; line-height: 1.55; }
-.c1-keycard dd { margin: 0; font-size: 14px; line-height: 1.6; }
-.c1-keycard .is-pick { background: var(--c1-pick); box-shadow: inset 0 0 0 2px var(--mt-blue); border-radius: 8px 8px 0 0; }
-.c1-keycard .c1-keycard__lead { font-weight: 800; color: #13294a; }
-.c1-keycard .is-pick .c1-note__table td { font-size: 15px; font-weight: 800; color: var(--mt-blue); }
-.c1-keycard .is-pick dt { color: var(--mt-blue); }
 
 @media (min-width: 768px) {
   .c1-table { width: 100%; }
@@ -176,11 +140,6 @@ b, strong { font-weight: 700; }
 .c1-figure figcaption span { display: block; font-size: 11px; color: var(--mt-sub); }
 
 /* ============ 全員向けではない ============ */
-.c1-others { display: grid; gap: 10px; margin: 0 0 1em; }
-.c1-others__item { padding: 12px 14px; border: 1px solid var(--c1-line); border-radius: 10px; background: var(--c1-bg); }
-.c1-others__if { margin: 0 0 .3em !important; font-size: 15px; font-weight: 700; line-height: 1.55; }
-.c1-others__if::before { content: "こんな人は："; display: block; font-size: 11.5px; font-weight: 700; color: var(--mt-sub); }
-.c1-others__then { margin: 0 !important; font-size: 14px; line-height: 1.7; }
 
 /* ============ タイムライン ============ */
 .c1-tl { position: relative; margin: 1em 0 .6em; padding: 0; list-style: none; }
@@ -250,10 +209,6 @@ b, strong { font-weight: 700; }
 .c1-check__prompt { margin: 0 0 1em !important; padding: .8em; border-radius: 10px; background: var(--c1-bg); text-align: center; font-size: 14px; color: #555; }
 
 /* ============ 不安解消 ============ */
-.c1-caution { margin: 0 0 14px; padding: 14px; border: 1px solid var(--c1-line); border-radius: 10px; background: #fbfcfd; }
-.c1-caution__ttl { display: flex; align-items: flex-start; gap: .5em; margin: 0 0 .6em; font-size: 16.5px; line-height: 1.5; }
-.c1-caution__ttl span { display: grid; place-items: center; flex: none; width: 1.6em; height: 1.6em; border-radius: 50%; background: var(--mt-blue); color: #fff; font-size: 13px; font-weight: 900; }
-.c1-caution p { margin: 0 0 .5em; font-size: 14.5px; line-height: 1.75; }
 /* 本校写真（元2.5:1）と教室写真（元1:1）を、切らずに同じ高さで並べる */
 .c1-caution__imgs { display: grid; grid-template-columns: 2.5fr 1fr; gap: 4px; margin: 0 0 .7em; }
 .c1-caution__imgs img { display: block; width: 100%; max-width: 100%; height: auto; border-radius: 6px; }
@@ -268,11 +223,6 @@ b, strong { font-weight: 700; }
 .c1-fee caption { caption-side: top; padding: 0 0 .3em; text-align: left; font-size: 13px; font-weight: 700; color: #3a4656; }
 .c1-fee__note { margin: .4em 0 0 !important; font-size: 12.5px !important; line-height: 1.6 !important; font-weight: 700; color: #3a4656; }
 
-/* ============ 注意点の補足BOX ============ */
-.c1-mini { margin: 0 0 14px; padding: 12px 14px; border-radius: 10px; background: var(--c1-bg); }
-.c1-mini__ttl { margin: 0 0 .4em !important; font-size: 14.5px; font-weight: 900; }
-.c1-mini ul { margin: 0 0 .4em; padding-left: 1.2em; }
-.c1-mini li { margin: 0 0 .5em; font-size: 14px; line-height: 1.7; }
 
 /* ============ 今、資料を見る理由 ============ */
 .c1-date { margin: 0 0 1.1em; padding: 12px 14px; border: 1px solid #cfd8e3; border-radius: 10px; background: #fff; text-align: center; }
@@ -323,8 +273,6 @@ b, strong { font-weight: 700; }
   .c1-photos3 { grid-template-columns: 1.333fr 1.776fr 1.776fr; }
   .c1-img-festival { grid-column: auto; aspect-ratio: 4 / 3; }
   .c1-figure img, .c1-img-mentor { max-width: 540px; margin-inline: auto; }
-  .c1-axes { grid-template-columns: 1fr 1fr; }
-  .c1-axes li.is-key { grid-column: 1 / -1; }
     .c1-docs { grid-template-columns: 220px 1fr; }
   .c1-docs__img { width: 100%; max-width: 100%; }
   .c1-final { margin-left: 0; margin-right: 0; border-radius: 12px; }
@@ -338,8 +286,37 @@ b, strong { font-weight: 700; }
 .mt-cta__btn::after { display: none; } /* 光が走るアニメーションは使わない */
 .mt-cta__micro { font-weight: 700; color: #3a4656; }
 .mt-textlink a { color: var(--mt-blue-2); }
-.mt-conclusion { border: 1px solid #cfd8e3; background: #f5f8fb; }
-.mt-conclusion__ttl { color: var(--mt-blue); }
 .mt-oneline span { background: none; color: var(--mt-blue); }
 .mt-oneline.c1-oneline--key span { background: linear-gradient(transparent 55%, var(--mt-mark) 55%); color: #13294a; }
 .mt-h2 { letter-spacing: .01em; }
+
+/* ============ パーツ集ベースの部品の調整（V3.6） ============ */
+/* 比較ポイント（mt-points） */
+.mt-points li { padding-left: 0; font-size: 15px; }
+.mt-points li::before { content: none; } /* ①〜⑤の番号があるので点は付けない */
+.mt-points .c1-key-text { color: var(--mt-blue); }
+
+/* 差の結論（mt-conclusion）：淡い黄色＋左のネイビー線で、比較の結論として見せる */
+.mt-conclusion { margin: 1.6em 0 .6em; padding: 1em 1.1em; border: 1px solid #ecd9a0; border-left: 4px solid var(--mt-blue); border-radius: 6px; background: #fffaea; }
+.mt-conclusion .mt-conclusion__ttl { margin: 0 0 .6em !important; font-size: 18px; font-weight: 800; line-height: 1.55; color: #13294a; }
+.mt-conclusion .c1-conclusion__lead { font-weight: 800; color: #13294a; }
+.mt-conclusion .c1-note__table { margin: .2em 0 .8em; background: #fff; }
+.mt-conclusion .c1-note__table td { font-size: 15px; font-weight: 800; color: var(--mt-blue); }
+
+/* 生徒の声：写真＋体験談ボックス（mt-story）。カードで囲わない */
+.c1-voice { margin: 0 0 1.4em; }
+.c1-voice__photo { display: block; width: 100%; max-width: 100%; height: auto; aspect-ratio: 640 / 382; object-fit: cover; border-radius: 6px 6px 0 0; }
+.c1-voice .mt-story { margin: 0; border-radius: 0 0 6px 0; }
+.c1-voice .mt-story p { margin: 0 0 .4em; }
+.c1-voice .c1-voice__ttl { font-size: 16px; font-weight: 700; line-height: 1.5; color: #13294a; }
+.c1-voice .c1-voice__src { font-size: 11.5px !important; color: var(--mt-sub); }
+@media (min-width: 768px) {
+  .c1-voice { display: grid; grid-template-columns: 38% 1fr; align-items: stretch; }
+  .c1-voice__photo { height: 100%; border-radius: 6px 0 0 6px; }
+  .c1-voice .mt-story { border-radius: 0 6px 6px 0; }
+}
+
+/* 注意点の補足リスト */
+.c1-notes { margin: 0 0 .6em; padding-left: 1.2em; }
+.c1-notes li { margin: 0 0 .5em; font-size: 14.5px; line-height: 1.75; }
+
