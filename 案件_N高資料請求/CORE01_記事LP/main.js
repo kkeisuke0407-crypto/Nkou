@@ -1,31 +1,44 @@
-/* CORE01 記事LP：チェック集計・SP固定CTA・CTAリンク差し替え */
+/* CORE01 記事LP：CTAクリック計測・自分ごとチェック・SP固定CTA */
 (function () {
   "use strict";
 
-  /* ---------- CTAリンク ----------
-     資料請求先（ASP計測URLなど）はここ1カ所で差し替える。
-     data-cta の値（fv / conclusion / timeline / check / final / final-text / sticky）を
-     パラメータで付けるので、どのボタンから遷移したかを計測できる。 */
-  var CTA_URL = "#"; // TODO: 本番の資料請求URLに差し替え
-  var CTA_PARAM = "cta"; // 計測パラメータ名（ASPの仕様に合わせて変更）
-
   document.documentElement.classList.add("js");
 
-  var ctas = document.querySelectorAll("[data-cta]");
-  for (var i = 0; i < ctas.length; i++) {
-    var el = ctas[i];
-    if (CTA_URL === "#") { el.setAttribute("href", "#"); continue; }
-    var sep = CTA_URL.indexOf("?") === -1 ? "?" : "&";
-    el.setAttribute("href", CTA_URL + sep + CTA_PARAM + "=" + encodeURIComponent(el.getAttribute("data-cta")));
-    el.setAttribute("rel", "nofollow sponsored noopener");
-  }
-  if (CTA_URL === "#") {
-    // 本番URL未設定の間は、クリックしても画面が先頭へ飛ばないようにする
-    document.addEventListener("click", function (e) {
-      var a = e.target.closest && e.target.closest("[data-cta]");
-      if (a) e.preventDefault();
-    });
-  }
+  /* ---------- CTAクリック計測 ----------
+     ASP計測URLは各CTAの href にそのまま設定する（JSでURLは一切いじらない）。
+     クリック時に、ボタンの位置（data-cta）を計測ツールへ送るだけ。
+       - "dataLayer"：GTM経由で送る（GTMで「cta_click」イベントをトリガーにしてGA4へ）
+       - "gtag"     ：gtag.js を直接使っている場合
+     両方同時に送ると二重計測になるので、どちらか1つにする。 */
+  var TRACKING_MODE = "dataLayer"; // "dataLayer" | "gtag"
+  var EVENT_NAME = "cta_click";
+
+  var track = function (a) {
+    var params = {
+      cta_position: a.getAttribute("data-cta"), // fv / conclusion / timeline / check / final / sticky
+      cta_type: a.getAttribute("data-cta-type") || "button",
+      cta_text: (a.textContent || "").replace(/\s+/g, " ").trim(),
+      link_url: a.href
+    };
+    try {
+      if (TRACKING_MODE === "gtag" && typeof window.gtag === "function") {
+        window.gtag("event", EVENT_NAME, params);
+      } else {
+        window.dataLayer = window.dataLayer || [];
+        var ev = { event: EVENT_NAME };
+        for (var key in params) ev[key] = params[key];
+        window.dataLayer.push(ev);
+      }
+    } catch (err) { /* 計測の失敗で遷移を止めない */ }
+  };
+
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest("a[data-cta]");
+    if (!a) return;
+    track(a);
+    // ASP URLを入れる前（href="#"）の間だけ、ページ先頭へ飛ばないようにする
+    if (a.getAttribute("href") === "#") e.preventDefault();
+  });
 
   /* ---------- 自分ごとチェック ---------- */
   var box = document.querySelector("[data-check]");
