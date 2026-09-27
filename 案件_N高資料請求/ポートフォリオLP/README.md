@@ -63,7 +63,10 @@ node 案件_N高資料請求/ポートフォリオLP/build.mjs   # src.html や 
 - N高の画像・生徒の声・事実はCORE01で確認済みのものを再利用（`CORE01_記事LP/IMPLEMENTATION_NOTES.md` の画像一覧・事実の出典を参照）。
 - `shared/img/clark_campus_sapporo_shiroishi_ccbysa.webp`：Wikimedia Commons「Clark Memorial International High School Sapporo Shiroishi Campus.jpg」撮影：禁樹なずな／CC BY-SA 4.0（640px）。
 - `shared/img/daiichi_campus_yabu_ccbysa.webp`：Wikimedia Commons「Daiichi Gakuin high school Yabu campus.jpg」撮影：KASEI（2012年10月）／CC BY-SA 3.0（640px）。
-- `shared/img/clark_logo_official.webp`：クラーク記念国際高等学校の公式ロゴ（ユーザー提供・641×89）。CP01・CP02の比較表のクラークの行に、切り抜き・加工せず元の比率で表示。使用可否（ロゴの利用ルール）は要確認。
+- 比較表のロゴ（CP01・CP02の学校名セル。切り抜き・加工せず元の比率で表示。使用可否＝各校のロゴ利用ルールは要確認）
+  - `shared/img/nkou_logo_nhighschool_official.svg`：N高等学校のロゴ（nnn.ed.jp/images/logos/logo_nhighschool.svg、2026-09-27取得）
+  - `shared/img/clark_logo_official.webp`：クラーク記念国際高等学校の公式ロゴ（ユーザー提供・641×89）
+  - `shared/img/daiichi_logo_official.svg`：第一学院高等学校のロゴ（daiichigakuin.ed.jp/assets/images/daiichi_logo01.svg、2026-09-27取得）
 - CC BY-SAの表示として、写真の直下に作者・ライセンス（リンク）・出典・「縮小・トリミングして使用」を記載している。競合校の公式サイトの画像は使っていない。
 
 ## クラーク・第一学院の確認済み事実（2026年9月27日・公式サイト）
