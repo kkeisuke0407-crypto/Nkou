@@ -17,7 +17,8 @@ URLは https://nko.hakobu-family.com/ の下。どれも `noindex`。
 - `page.json` … slug・lp_id・title・description
 - `src.html` … そのLPの骨格（セクションの順番とKW専用の文章）。**編集するのはここ**
 - `shared/partials/*.html` … どのLPでも同じ内容のブロック。`<!-- @include nkou-detail.html cta=rank1 -->` の形で読み込む（`cta=` はCTA位置名）
-- `shared/portfolio.css` … 追加スタイル（最小限の c1-*）
+- `shared/portfolio.css` … 追加スタイル（共通FVの portfolio-hero と、最小限の c1-*）
+- `shared/assets/hero-bg.webp`（＋SP・低解像度向け `hero-bg-960.webp`）… 全LP共通のFV背景（16:9、文字なし）。見出しはHTMLで重ねる
 - `index.html` … 自動生成物（リポジトリ内プレビュー用）。**直接編集しない**
 - CSS・JS・N高画像は `../CORE01_記事LP/` のもの（parts.css・core01.css・main.js・assets/img/）を使う
 
@@ -55,6 +56,8 @@ node 案件_N高資料請求/ポートフォリオLP/build.mjs   # src.html や 
 - GTM / GA4 のタグは、まだどのページにも入っていない。
 
 ## 素材
+
+- `shared/assets/hero-bg.webp`：ユーザー提供の「青空と学びのキャンパス風景」（1672×941。受け取ったWebPをそのまま使用）。`hero-bg-960.webp` はその縮小版（960×540・品質82）。実在の生徒の写真ではないため、FV右下に「※写真はイメージです」を表示。
 
 - N高の画像・生徒の声・事実はCORE01で確認済みのものを再利用（`CORE01_記事LP/IMPLEMENTATION_NOTES.md` の画像一覧・事実の出典を参照）。
 - `shared/img/clark_campus_sapporo_shiroishi_ccbysa.webp`：Wikimedia Commons「Clark Memorial International High School Sapporo Shiroishi Campus.jpg」撮影：禁樹なずな／CC BY-SA 4.0（640px）。

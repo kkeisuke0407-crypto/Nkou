@@ -8,7 +8,7 @@
 //
 // パスの書き方（src.html / partial 共通）
 //   {{core}}   … CORE01_記事LP/ への相対パス（parts.css・core01.css・main.js・assets/img/）
-//   {{shared}} … shared/ への相対パス（portfolio.css・img/）
+//   {{shared}} … shared/ への相対パス（portfolio.css・img/・assets/＝FV背景）
 //
 //   node 案件_N高資料請求/ポートフォリオLP/build.mjs                 … 各LPフォルダの index.html を作り直す（リポジトリ内プレビュー用）
 //   node 案件_N高資料請求/ポートフォリオLP/build.mjs --deploy _site  … 公開用に _site/pf/<slug>/index.html を書き出す
@@ -95,7 +95,10 @@ if (deployIdx >= 0) {
   const pf = join(out, "pf");
   mkdirSync(join(pf, "shared", "img"), { recursive: true });
   copyFileSync(join(SHARED_DIR, "portfolio.css"), join(pf, "shared", "portfolio.css"));
-  for (const f of readdirSync(join(SHARED_DIR, "img"))) copyFileSync(join(SHARED_DIR, "img", f), join(pf, "shared", "img", f));
+  for (const sub of ["img", "assets"]) {
+    mkdirSync(join(pf, "shared", sub), { recursive: true });
+    for (const f of readdirSync(join(SHARED_DIR, sub))) copyFileSync(join(SHARED_DIR, sub, f), join(pf, "shared", sub, f));
+  }
   for (const dir of pages) {
     const { meta } = render(dir, { core: "", shared: "" });
     const dest = join(pf, meta.slug);
