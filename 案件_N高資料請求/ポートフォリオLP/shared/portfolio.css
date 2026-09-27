@@ -5,6 +5,34 @@
    新しいカードUIは作らない。
    ============================================================ */
 
+/* ============================================================
+   FV / KV（全ポートフォリオ共通の背景画像＋HTMLテキスト）
+   画像は背景のみ（文字は焼き込まない）。空の部分に見出しを置き、人物の顔には重ねない。
+   背景画像のパスはこのCSSからの相対パス（shared/assets/）。
+   ============================================================ */
+.portfolio-hero { margin: 10px 0 0; }
+/* SPは16:9だと低すぎるので、高さを max(380px, 16:9の高さ) にする（aspect-ratio＋min-height は幅が広がるので使わない） */
+.portfolio-hero__visual { position: relative; margin: 0 -16px; height: max(380px, 56.25vw); overflow: hidden;
+  background: #cfe6f7 url("assets/hero-bg.webp") 4% 50% / cover no-repeat; /* SPは左の人物が切れない位置 */
+  background-image: -webkit-image-set(url("assets/hero-bg-960.webp") 1x, url("assets/hero-bg.webp") 2x);
+  background-image: image-set(url("assets/hero-bg-960.webp") 1x, url("assets/hero-bg.webp") 2x); }
+/* 上から薄い白グラデーション（空の部分だけ明るくして文字を読みやすく。写真の下半分はそのまま） */
+.portfolio-hero__overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255,255,255,.62) 0%, rgba(255,255,255,.38) 30%, rgba(255,255,255,0) 52%); pointer-events: none; }
+.portfolio-hero__text { position: relative; padding: 18px 16px 0; color: #13294a; text-shadow: 0 0 6px rgba(255,255,255,.9), 0 0 2px rgba(255,255,255,.9); }
+.portfolio-hero__eyebrow { display: inline-block; margin: 0 0 8px !important; padding: .15em .7em; border-radius: 999px; background: rgba(255,255,255,.82); color: var(--mt-blue); font-size: 12px; font-weight: 700; line-height: 1.6; text-shadow: none; }
+.portfolio-hero__title { margin: 0; font-size: clamp(22px, 6.4vw, 27px); font-weight: 900; line-height: 1.42; letter-spacing: .01em; }
+.portfolio-hero__title .mt-mark { display: inline; font-size: .72em; line-height: 1.6; }
+.portfolio-hero__note { position: absolute; right: 6px; bottom: 6px; margin: 0 !important; padding: 0 .4em; border-radius: 3px; background: rgba(0,0,0,.38); color: #fff; font-size: 10.5px; line-height: 1.6; }
+.portfolio-hero__lead { margin: 12px 0 0 !important; font-size: 15.5px; line-height: 1.75; }
+@media (min-width: 768px) {
+  .portfolio-hero { margin: 16px 0 0; }
+  .portfolio-hero__visual { margin: 0; height: auto; aspect-ratio: 16 / 9; border-radius: 8px; background-position: 50% 50%; }
+  .portfolio-hero__text { padding: 22px 32px 0; text-align: center; }
+  .portfolio-hero__title { font-size: 28px; line-height: 1.4; }
+  .portfolio-hero__title .mt-mark { font-size: .7em; }
+  .portfolio-hero__lead { font-size: 17px; }
+}
+
 /* ---------- パーツの調整 ---------- */
 /* 特徴リスト（mt-points）：core01.css は①〜⑤の番号つきリスト用に点を消しているので、
    番号のないリストでは parts.css どおりの点に戻す。番号つきは .c1-points--num */
@@ -49,8 +77,6 @@
 .c1-course img { display: block; width: 100%; border-radius: 6px; background: #eef5fc; }
 .c1-course figcaption { margin-top: .4em; font-size: 14.5px; line-height: 1.7; }
 .c1-course figcaption b { color: var(--mt-blue); }
-/* CP04 FV：本校の写真（元2.5:1）を通学写真と同じ3:1の枠に */
-.c1-fv__half--okinawa img { aspect-ratio: 3 / 1; object-position: 50% 55%; }
 /* CP04 スクーリング教室の写真（元1:1・320px）：拡大しすぎないよう16:9に */
 .c1-img-schooling-wide { aspect-ratio: 16 / 9; object-fit: cover; object-position: 50% 45%; }
 /* 最終CTAのバナー */
