@@ -52,7 +52,8 @@ node 案件_N高資料請求/ポートフォリオLP/build.mjs   # src.html や 
 - ASP計測URLは `../CORE01_記事LP/main.js` の `CTA_URL` 1カ所だけ（現在 `"#"`）。独自パラメータは付けない。
 - クリックは `cta_click` で dataLayer へ。`lp_id` と `cta_position`（rank1／life／fee_example／answer／nkou_detail／final／sticky など）で区別。ASP URLは送らない。
 - SP固定CTAは、`data-sticky-start` を付けたセクション（CP01：比較表、CP02：答え、CP04：N高の場合）を読み始めたら出る。
-- クラーク・第一学院の公式サイトへのテキストリンクは `data-cta` を付けていない（計測・CTA_URLの対象外）。
+- クラーク・第一学院の詳細には公式サイトへの誘導リンクを置いていない（出典は基本情報の下の小さい注記にドメイン名で記載）。
+- 比較表（CP01・CP02）の N高の行の小さいボタンは `data-cta="compare_table"`。
 - GTM / GA4 のタグは、まだどのページにも入っていない。
 
 ## 素材
