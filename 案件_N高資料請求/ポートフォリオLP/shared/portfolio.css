@@ -33,6 +33,10 @@
   .portfolio-hero__lead { font-size: 17px; }
 }
 
+/* ---------- 冒頭のPR表記：短く、目立たせすぎず、でもPRと分かる濃さ・大きさで ---------- */
+.c1-pr { margin: 10px 0 0 !important; font-size: 12.5px; line-height: 1.6; color: #444; }
+.c1-pr__tag { padding: 0 .45em; border-color: #666; color: #333; }
+
 /* ---------- パーツの調整 ---------- */
 /* 特徴リスト（mt-points）：core01.css は①〜⑤の番号つきリスト用に点を消しているので、
    番号のないリストでは parts.css どおりの点に戻す。番号つきは .c1-points--num */

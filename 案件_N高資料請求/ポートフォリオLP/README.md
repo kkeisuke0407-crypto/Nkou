@@ -32,6 +32,7 @@ URLは https://nko.hakobu-family.com/ の下。どれも `noindex`。
 | `nkou-caution.html` | 全員向けではない・スクーリング・学費・地域差 | CP01 |
 | `nkou-fee-table.html` | 初年度の実質負担モデル表（支援金注記つき） | CP01・CP02 |
 | `why-now.html` | 出願期間・学校選びの流れ・資料で見るところ | CP01・CP02 |
+| `pr.html` | 冒頭のPR表記「PR｜広告を含みます」（A8・広告主の文言指定があればここ1カ所を差し替え） | 全LP |
 | `final-cta.html` / `header.html` / `footer.html` | 最終CTA、サイト名帯、フッター・SP固定CTA・main.js | 全LP |
 
 ## 更新手順
