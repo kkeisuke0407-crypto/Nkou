@@ -27,4 +27,5 @@ Claude初稿指示：
 ## 制作物
 
 - CORE01 記事LP（HTML/CSS/JS）：`案件_N高資料請求/CORE01_記事LP/index.html`
+  - 公開URL：https://nko.hakobu-family.com/ （`main` へのpushで `.github/workflows/pages.yml` がLPのファイルだけをGitHub Pagesへデプロイ）
   - 実装メモ・使用画像一覧・3つの壁チェック・ABテスト案：`案件_N高資料請求/CORE01_記事LP/IMPLEMENTATION_NOTES.md`

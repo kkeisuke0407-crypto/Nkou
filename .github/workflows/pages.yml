@@ -1,0 +1,46 @@
+# CORE01 記事LP を GitHub Pages（https://nko.hakobu-family.com/）へ公開する
+# main への push で、LPのファイルだけを _site に集めてデプロイする。
+# （IMPLEMENTATION_NOTES.md や調査資料・スクリプトは公開しない）
+name: Deploy LP to Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Build site (LP files only)
+        run: |
+          SRC="案件_N高資料請求/CORE01_記事LP"
+          mkdir -p _site
+          cp "$SRC/index.html" "$SRC/parts.css" "$SRC/core01.css" "$SRC/main.js" _site/
+          cp -r "$SRC/assets" _site/
+          echo "nko.hakobu-family.com" > _site/CNAME
+          touch _site/.nojekyll
+          find _site -type f | sort
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '_site'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
