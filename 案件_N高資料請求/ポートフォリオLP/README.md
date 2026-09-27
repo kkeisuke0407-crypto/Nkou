@@ -3,18 +3,18 @@
 ポートフォリオ（CP01〜CP04）ごとに**LPの骨格そのものを変える**LP群。
 設計：`../Stage12_ポートフォリオLP再設計/`（旧設計の橋掛けLP `../橋掛けLP/` は公開中のため残している）
 
-| フォルダ | 型 | 対象KW | 確認用URL（mainマージ後） | lp_id |
+| フォルダ | 型 | 対象KW | 公開URL（同じページを /pf/ にも公開） | lp_id |
 |---|---|---|---|---|
-| `CP01_王道ランキング/` | ジャンル王道（比較表→ランキング） | 比較・おすすめ・ランキング・どこがいい | /pf/cp01/ | pf_cp01_ranking |
-| `CP02_その他ジャンル/fee/` | その他ジャンル（答え→比較→ランキング） | 学費・費用・授業料 | /pf/cp02-fee/ | pf_cp02_fee |
+| `CP01_王道ランキング/` | ジャンル王道（比較表→ランキング） | 比較・おすすめ・ランキング・どこがいい | /nkou/compare/（/pf/cp01/） | pf_cp01_ranking |
+| `CP02_その他ジャンル/fee/` | その他ジャンル（答え→比較→ランキング） | 学費・費用・授業料 | /nkou/fee/（/pf/cp02-fee/） | pf_cp02_fee |
 | `CP03_競合/` | 競合KW（設計のみ） | 学校名＋学費／口コミ | — | — |
-| `CP04_インテント/schooling/` | インテント（答え→N高単品） | スクーリングとは・スクーリング 少ない | /pf/cp04-schooling/ | pf_cp04_schooling |
+| `CP04_インテント/schooling/` | インテント（答え→N高単品） | スクーリングとは・スクーリング 少ない | /nkou/select/（/pf/cp04-schooling/） | pf_cp04_schooling |
 
 URLは https://nko.hakobu-family.com/ の下。どれも `noindex`。
 
 ## しくみ
 
-- `page.json` … slug・lp_id・title・description
+- `page.json` … slug・publishAs（/pf/ 以外に公開するパス）・lp_id・title・description
 - `src.html` … そのLPの骨格（セクションの順番とKW専用の文章）。**編集するのはここ**
 - `shared/partials/*.html` … どのLPでも同じ内容のブロック。`<!-- @include nkou-detail.html cta=rank1 -->` の形で読み込む（`cta=` はCTA位置名）
 - `shared/portfolio.css` … 追加スタイル（共通FVの portfolio-hero と、最小限の c1-*）

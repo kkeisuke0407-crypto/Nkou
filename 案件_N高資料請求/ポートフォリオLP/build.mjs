@@ -11,7 +11,8 @@
 //   {{shared}} … shared/ への相対パス（portfolio.css・img/・assets/＝FV背景）
 //
 //   node 案件_N高資料請求/ポートフォリオLP/build.mjs                 … 各LPフォルダの index.html を作り直す（リポジトリ内プレビュー用）
-//   node 案件_N高資料請求/ポートフォリオLP/build.mjs --deploy _site  … 公開用に _site/pf/<slug>/index.html を書き出す
+//   node 案件_N高資料請求/ポートフォリオLP/build.mjs --deploy _site  … 公開用に _site/pf/<slug>/index.html と、
+//                                                                     page.json の publishAs（/nkou/compare/ など）に書き出す
 //
 // LPを追加するときは、同じ型のフォルダをコピーして page.json と src.html を書き換える（README.md 参照）。
 
@@ -100,10 +101,14 @@ if (deployIdx >= 0) {
   }
   for (const dir of pages) {
     const { meta } = render(dir, { core: "", shared: "" });
-    const dest = join(pf, meta.slug);
-    mkdirSync(dest, { recursive: true });
-    writeFileSync(join(dest, "index.html"), render(dir, { core: "../../", shared: "../shared/" }).html);
-    console.log(`deploy: pf/${meta.slug}/index.html (${relative(HERE, dir)})`);
+    // 公開パス：/pf/<slug>/ に加えて、page.json の publishAs（例："nkou/compare"）にも同じページを書き出す
+    for (const path of [`pf/${meta.slug}`, ...(meta.publishAs || [])]) {
+      const up = "../".repeat(path.split("/").length);
+      const dest = join(out, ...path.split("/"));
+      mkdirSync(dest, { recursive: true });
+      writeFileSync(join(dest, "index.html"), render(dir, { core: up, shared: `${up}pf/shared/` }).html);
+      console.log(`deploy: ${path}/index.html (${relative(HERE, dir)})`);
+    }
   }
 } else {
   // リポジトリ内プレビュー用：各LPフォルダの index.html を作り直す
