@@ -1,108 +1,144 @@
 /* ============================================================
    ポートフォリオLP（Stage12）追加スタイル
-   ベース：CORE01_記事LP/parts.css（mt-*）＋ core01.css（配色トークン・FV・比較表・生徒の声など）。
-   ここには「既存パーツでは表現できないレイアウト調整・画像トリミング」だけを置く。
-   新しいカードUIは作らない。
+   デザインの正本：LPパーツ集_体験談ランキング型/parts.css（mt-*）。
+   このLPは parts.css をそのまま読み込み、mt-* の色・装飾は上書きしない
+   （CORE01の core01.css は読み込まない）。
+   ここに置くのは、FV背景・レイアウト（本文幅・サイト帯）・画像トリミング・ロゴや表の最低限の幅・
+   SP固定CTA（計測）・375pxの崩れ防止だけ。
    ============================================================ */
 
+/* ---------- 土台（本文幅・サイト帯・画像の基本） ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: #fff; }
+img { max-width: 100%; height: auto; }
+.c1-wrap { max-width: 720px; margin: 0 auto; padding: 0 16px 120px; }
+.c1-wrap section { scroll-margin-top: 12px; }
+.c1-sitebar, .c1-footer { font-size: 14px; }
+
+/* ---------- 冒頭のPR表記（文言は shared/partials/pr.html） ---------- */
+.c1-pr { margin: 10px 0 0 !important; font-size: 12.5px; line-height: 1.6; color: #444; }
+.c1-pr__tag { display: inline-block; margin-right: .5em; padding: 0 .45em; border: 1px solid #666; border-radius: 3px; font-weight: 700; color: #333; }
+
 /* ============================================================
-   FV / KV（全ポートフォリオ共通の背景画像＋HTMLテキスト）
-   画像は背景のみ（文字は焼き込まない）。空の部分に見出しを置き、人物の顔には重ねない。
-   背景画像のパスはこのCSSからの相対パス（shared/assets/）。
+   FV / KV（全ポートフォリオ共通の16:9背景画像＋HTMLテキスト）
+   画像は背景のみ（文字は焼き込まない）。見出しは上部の空に置き、人物の顔には重ねない。
    ============================================================ */
 .portfolio-hero { margin: 10px 0 0; }
-/* SPは16:9だと低すぎるので、高さを max(380px, 16:9の高さ) にする（aspect-ratio＋min-height は幅が広がるので使わない） */
-.portfolio-hero__visual { position: relative; margin: 0 -16px; height: max(380px, 56.25vw); overflow: hidden;
-  background: #cfe6f7 url("assets/hero-bg.webp") 4% 50% / cover no-repeat; /* SPは左の人物が切れない位置 */
+.portfolio-hero__visual { position: relative; margin: 0 -16px; aspect-ratio: 16 / 9; overflow: hidden;
+  background: #cfe6f7 url("assets/hero-bg.webp") 50% 50% / cover no-repeat;
   background-image: -webkit-image-set(url("assets/hero-bg-960.webp") 1x, url("assets/hero-bg.webp") 2x);
   background-image: image-set(url("assets/hero-bg-960.webp") 1x, url("assets/hero-bg.webp") 2x); }
-/* 上から薄い白グラデーション（空の部分だけ明るくして文字を読みやすく。写真の下半分はそのまま） */
-.portfolio-hero__overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255,255,255,.62) 0%, rgba(255,255,255,.38) 30%, rgba(255,255,255,0) 52%); pointer-events: none; }
-.portfolio-hero__text { position: relative; padding: 18px 16px 0; color: #13294a; text-shadow: 0 0 6px rgba(255,255,255,.9), 0 0 2px rgba(255,255,255,.9); }
-.portfolio-hero__eyebrow { display: inline-block; margin: 0 0 8px !important; padding: .15em .7em; border-radius: 999px; background: rgba(255,255,255,.82); color: var(--mt-blue); font-size: 12px; font-weight: 700; line-height: 1.6; text-shadow: none; }
-.portfolio-hero__title { margin: 0; font-size: clamp(22px, 6.4vw, 27px); font-weight: 900; line-height: 1.42; letter-spacing: .01em; }
-.portfolio-hero__title .mt-mark { display: inline; font-size: .72em; line-height: 1.6; }
-.portfolio-hero__note { position: absolute; right: 6px; bottom: 6px; margin: 0 !important; padding: 0 .4em; border-radius: 3px; background: rgba(0,0,0,.38); color: #fff; font-size: 10.5px; line-height: 1.6; }
-.portfolio-hero__lead { margin: 12px 0 0 !important; font-size: 15.5px; line-height: 1.75; }
+/* 上から薄い白グラデーション（空の部分だけ明るく。写真は暗くしない） */
+.portfolio-hero__overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255,255,255,.7) 0%, rgba(255,255,255,.42) 34%, rgba(255,255,255,0) 55%); pointer-events: none; }
+.portfolio-hero__text { position: relative; padding: 7px 12px 0; color: var(--mt-ink); text-shadow: 0 0 5px rgba(255,255,255,.95), 0 0 2px rgba(255,255,255,.95); }
+.portfolio-hero__eyebrow { display: inline-block; margin: 0 0 3px !important; padding: 0 .6em; border-radius: 999px; background: var(--mt-blue); color: #fff; font-size: 10.5px; font-weight: 700; line-height: 1.65; text-shadow: none; }
+.portfolio-hero__title { margin: 0; font-size: 18px; font-weight: 900; line-height: 1.3; }
+.portfolio-hero__title .mt-mark { font-size: .78em; line-height: 1.5; }
+.portfolio-hero__note { position: absolute; right: 5px; bottom: 5px; margin: 0 !important; padding: 0 .4em; border-radius: 3px; background: rgba(0,0,0,.4); color: #fff; font-size: 10px; line-height: 1.6; }
+.portfolio-hero__lead { margin: 12px 0 0 !important; font-size: 15.5px; line-height: 1.8; }
+@media (min-width: 420px) { .portfolio-hero__title { font-size: 22px; } }
 @media (min-width: 768px) {
   .portfolio-hero { margin: 16px 0 0; }
-  .portfolio-hero__visual { margin: 0; height: auto; aspect-ratio: 16 / 9; border-radius: 8px; background-position: 50% 50%; }
+  .portfolio-hero__visual { margin: 0; border-radius: 4px; }
   .portfolio-hero__text { padding: 22px 32px 0; text-align: center; }
-  .portfolio-hero__title { font-size: 28px; line-height: 1.4; }
+  .portfolio-hero__eyebrow { font-size: 12.5px; }
+  .portfolio-hero__title { font-size: 30px; line-height: 1.4; }
   .portfolio-hero__title .mt-mark { font-size: .7em; }
   .portfolio-hero__lead { font-size: 17px; }
 }
 
-/* ---------- 冒頭のPR表記：短く、目立たせすぎず、でもPRと分かる濃さ・大きさで ---------- */
-.c1-pr { margin: 10px 0 0 !important; font-size: 12.5px; line-height: 1.6; color: #444; }
-.c1-pr__tag { padding: 0 .45em; border-color: #666; color: #333; }
-
-/* ---------- パーツの調整 ---------- */
-/* 特徴リスト（mt-points）：core01.css は①〜⑤の番号つきリスト用に点を消しているので、
-   番号のないリストでは parts.css どおりの点に戻す。番号つきは .c1-points--num */
-.mt-points li { padding-left: 1.3em; }
-.mt-points li::before { content: ""; background: var(--mt-blue-2); }
-.mt-points.c1-points--num li { padding-left: 0; }
-.mt-points.c1-points--num li::before { content: none; }
-
-/* 順位ラベル（mt-h3__rank）：メダル・金銀銅は使わず、3校とも同じネイビーの小さなラベル */
-.mt-h3__rank { display: inline-block; margin-right: .45em; padding: .05em .5em; border-radius: 3px; background: var(--mt-blue); color: #fff; font-size: .78em; line-height: 1.5; vertical-align: .12em; white-space: nowrap; }
-.mt-h3[id^="rank"] { margin-top: 2.4em; scroll-margin-top: 12px; }
-
-/* ---------- 比較表のロゴ（ユーザー提供の公式ロゴ。切り抜き・加工はせず、元の比率のまま） ---------- */
+/* ---------- ランキング ---------- */
+.mt-h3[id^="rank"] { margin-top: 2.4em; }
+/* 比較表の学校名セル（順位バッジ・ロゴ・学校名）。ロゴは加工せず元の比率のまま */
 .mt-table td.c1-logo-cell { min-width: 150px; }
+.c1-logo-cell .mt-badge { margin: 0 0 .4em; font-size: 12px; }
 .c1-table-logo { display: block; width: 140px; max-width: 100%; height: auto; margin: 0 auto .3em; }
 
-/* ---------- ランキングTOP3一覧（mt-table）：375pxで横スクロールなしに収める ---------- */
-.c1-rank { min-width: 0; width: 100%; table-layout: fixed; font-size: 13px; }
-.c1-rank th, .c1-rank td { position: static; padding: .55em .45em; text-align: left; vertical-align: middle; border-color: var(--c1-line); }
-.c1-rank thead th, .c1-rank thead th:first-child { background: var(--mt-blue); color: #fff; font-size: 12px; white-space: nowrap; }
-.c1-rank th:first-child, .c1-rank td:first-child { width: 3.9em; min-width: 0; text-align: center; background: #fff; }
-.c1-rank th:nth-child(2), .c1-rank td:nth-child(2) { width: 10.2em; }
-.c1-rank .mt-h3__rank { margin: 0; font-size: 12px; }
-.c1-rank .mt-name { color: var(--mt-blue-2); font-size: 13px; }
-.c1-rank tr.is-pick td, .c1-rank tr.is-pick td:first-child { background: var(--c1-pick); }
+/* 各校の基本情報（mt-table を縦の項目表として使う。375pxで横スクロールさせない） */
+.c1-spec { min-width: 0; width: 100%; margin: 0 0 .5em; font-size: 14px; }
+.c1-spec th, .c1-spec td { position: static; text-align: left; vertical-align: top; }
+.c1-spec th, .c1-spec th:first-child { width: 6.8em; min-width: 0; background: #fbeaea; font-size: 13px; }
+.c1-spec__note { display: block; margin-top: .2em; font-size: 12px; font-weight: 700; line-height: 1.5; color: var(--mt-red); }
 
-/* ---------- 各校の基本情報（mt-table を縦の項目表として使う） ---------- */
-.c1-spec { min-width: 0; width: 100%; margin: 0 0 .5em; font-size: 14px; line-height: 1.6; }
-.c1-spec th, .c1-spec td { position: static; padding: .6em .6em; text-align: left; vertical-align: top; border-color: var(--c1-line); }
-.c1-spec th, .c1-spec th:first-child { width: 6.8em; min-width: 0; background: var(--mt-blue-bg); color: var(--mt-blue); font-size: 13px; font-weight: 700; }
-.c1-spec b { color: #13294a; }
-.c1-spec__note { display: block; margin-top: .2em; font-size: 12px; font-weight: 700; line-height: 1.5; color: #3a4656; }
-
-/* ---------- 画像 ---------- */
-/* N高の公式バナー（正方形・文字入り）：mt-banner の枠に入れ、切らずに中央へ */
-.c1-banner--square { width: 200px; max-width: 60%; margin: .6em auto 1em; }
-.c1-banner--square img { display: block; width: 100%; height: auto; border-radius: 8px; box-shadow: var(--c1-shadow); }
-/* 2位・3位の校舎写真（CC BY-SA）：16:9に切り、看板・校名表示が入る位置に合わせる */
-.c1-school-photo { margin: .6em 0 .3em; }
+/* ---------- 画像のトリミング・サイズ ---------- */
+/* N高の公式バナー（正方形・文字入り）：mt-banner の中で切らずに表示 */
+.c1-banner--square { width: 250px; max-width: 72%; margin: .8em auto 1.2em; }
+.c1-banner--square img { display: block; width: 100%; height: auto; border-radius: 4px; }
+/* 2位・3位の校舎写真（CC BY-SA）：16:9に切り、看板・校名表示が入る位置に */
+.c1-school-photo { margin: .8em 0 .3em; }
 .c1-school-photo img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; object-position: 50% 72%; border-radius: 4px; }
 .c1-school-photo--daiichi img { object-position: 50% 42%; }
 .c1-credit { margin: 0 0 1em !important; font-size: 11px !important; }
 .c1-credit a { color: var(--mt-sub); }
 /* コース説明図（文字入り）：切らずに元の比率で */
 .c1-course { margin: 0 0 1.1em; }
-.c1-course img { display: block; width: 100%; border-radius: 6px; background: #eef5fc; }
-.c1-course figcaption { margin-top: .4em; font-size: 14.5px; line-height: 1.7; }
-.c1-course figcaption b { color: var(--mt-blue); }
-/* CP04 スクーリング教室の写真（元1:1・320px）：拡大しすぎないよう16:9に */
+.c1-course img { display: block; width: 100%; border-radius: 4px; }
+.c1-course figcaption { margin-top: .4em; font-size: 15px; line-height: 1.7; }
+/* 生徒の声：写真＋mt-story */
+.c1-voice { margin: 0 0 1.4em; }
+.c1-voice__photo { display: block; width: 100%; aspect-ratio: 640 / 382; object-fit: cover; border-radius: 4px 4px 0 0; }
+.c1-voice .mt-story { margin: 0; }
+.c1-voice__ttl { margin: 0 0 .4em !important; font-size: 16.5px !important; font-weight: 700; line-height: 1.5 !important; }
+.c1-voice__src { font-size: 11.5px !important; color: var(--mt-sub); }
+/* 写真・図 */
+.c1-figure { margin: 0 0 1em; }
+.c1-figure img { display: block; width: 100%; border-radius: 4px; }
+.c1-figure figcaption { margin-top: .4em; font-size: 13px; line-height: 1.6; color: #444; }
+.c1-framed { margin: .8em auto .3em; max-width: 440px; line-height: 0; }
+.c1-framed img { display: block; width: 100%; border: 1px solid var(--mt-rule); }
+.c1-caution__imgs { display: grid; grid-template-columns: 2.5fr 1fr; gap: 4px; margin: 0 0 .7em; }
+.c1-caution__imgs img { display: block; width: 100%; border-radius: 4px; }
+.c1-img-okinawa { aspect-ratio: 640 / 256; }
+.c1-img-schooling { aspect-ratio: 1 / 1; }
 .c1-img-schooling-wide { aspect-ratio: 16 / 9; object-fit: cover; object-position: 50% 45%; }
-/* 最終CTAのバナー */
-.c1-final-banner { margin: 0 auto .6em; width: 160px; max-width: 50%; line-height: 0; }
-.c1-final-banner img { display: block; width: 100%; height: auto; border-radius: 8px; box-shadow: var(--c1-shadow); }
+.c1-img-figure { aspect-ratio: 1014 / 571; object-fit: contain; }
+.c1-docs { display: grid; gap: 10px; align-items: center; }
+.c1-docs__img { width: 220px; max-width: 75%; margin: 0 auto; }
+.c1-docs .mt-steps { margin: 0; }
+.c1-final-banner { margin: 0 auto .6em; width: 180px; max-width: 55%; line-height: 0; }
+.c1-final-banner img { display: block; width: 100%; border-radius: 4px; }
 
-/* 数字の強調（mt-oneline の中の大きな数字）：進路決定率など、根拠つきの実数だけに使う */
-.c1-oneline--num span { font-size: 30px; letter-spacing: .01em; }
+/* ---------- 表（学費モデル・変更ルール） ---------- */
+.c1-fee { margin: 0 0 .7em; }
+.c1-fee table { width: 100%; border-collapse: collapse; background: #fff; font-size: 14px; }
+.c1-fee th, .c1-fee td { padding: .55em .4em; border: 1px solid var(--mt-rule); text-align: center; line-height: 1.4; }
+.c1-fee thead th { background: #fbeaea; font-size: 12.5px; }
+.c1-fee tbody th { background: #fafafa; }
+.c1-fee td { font-weight: 700; font-variant-numeric: tabular-nums; }
+.c1-fee caption { caption-side: top; padding: 0 0 .3em; text-align: left; font-size: 13.5px; font-weight: 700; }
+.c1-fee__note { margin: .4em 0 0 !important; font-size: 12.5px !important; line-height: 1.6 !important; font-weight: 700; color: var(--mt-red); }
+.c1-note__table { width: 100%; margin: 0 0 .7em; border-collapse: collapse; font-size: 14px; }
+.c1-note__table th, .c1-note__table td { padding: .5em .6em; border: 1px solid var(--mt-rule); line-height: 1.5; }
+.c1-note__table th { background: var(--mt-yellow-bg); text-align: left; font-weight: 700; }
+.c1-note__table td { width: 7em; text-align: center; font-weight: 900; color: var(--mt-red); white-space: nowrap; }
 
-/* ---------- 余白 ---------- */
+/* ---------- 注記・出典 ---------- */
+.c1-proof__src { margin: .2em 0 1em !important; font-size: 11.5px !important; line-height: 1.55 !important; color: var(--mt-sub); }
+.c1-sources { margin-top: 2em; padding: 14px; background: #f6f6f6; }
+.c1-sources__ttl { margin: 0 0 .5em; font-size: 14px; }
+.c1-sources ul { margin: 0; padding-left: 1.2em; }
+.c1-sources li { margin: 0 0 .4em; font-size: 11.5px; line-height: 1.6; color: #555; }
+.c1-oneline--num span { font-size: 30px; }
+
+/* ---------- 最終CTA ---------- */
 #final { margin-top: 2.4em; text-align: center; }
 #final .mt-h2 { text-align: left; }
-#final .mt-textlink { text-align: center; }
-.mt-conclusion .mt-conclusion__ttl { color: var(--mt-red); }
+
+/* ---------- SP固定CTA（計測は main.js。本文のCTAが見えている間は隠れる） ---------- */
+.c1-sticky { position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; padding: 8px 12px calc(8px + env(safe-area-inset-bottom)); background: rgba(255,255,255,.96); box-shadow: 0 -2px 12px rgba(0,0,0,.12); transform: translateY(110%); transition: transform .25s ease; }
+.c1-sticky.is-show { transform: none; }
+@media (prefers-reduced-motion: reduce) { .c1-sticky { transition: none; } }
+.c1-sticky__btn { display: block; max-width: 520px; margin: 0 auto; padding: .55em .8em; border-radius: 8px; background: var(--mt-blue-2); box-shadow: 0 3px 0 #0056b3; color: #fff; text-align: center; text-decoration: none; line-height: 1.35; }
+.c1-sticky__btn b { display: block; font-size: 16px; }
+.c1-sticky__btn small { display: block; font-size: 11.5px; opacity: .92; }
 
 @media (min-width: 768px) {
-  .c1-rank th:nth-child(2), .c1-rank td:nth-child(2) { width: 11em; }
+  .c1-wrap { padding-bottom: 60px; }
   .c1-school-photo img { max-width: 560px; margin-inline: auto; }
   .c1-course { display: grid; grid-template-columns: 260px 1fr; gap: 14px; align-items: center; }
   .c1-course figcaption { margin: 0; }
+  .c1-docs { grid-template-columns: 220px 1fr; }
+  .c1-docs__img { width: 100%; max-width: 100%; }
+  .c1-sticky { display: none; }
 }

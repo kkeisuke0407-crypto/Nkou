@@ -67,7 +67,6 @@ const render = (pageDir, { core, shared }) => {
 <!-- 広告の着地用LP。検索結果には出さない -->
 <meta name="robots" content="noindex, follow">
 <link rel="stylesheet" href="{{core}}parts.css">
-<link rel="stylesheet" href="{{core}}core01.css">
 <link rel="stylesheet" href="{{shared}}portfolio.css">
 </head>
 <body data-lp="${meta.lpId}">
