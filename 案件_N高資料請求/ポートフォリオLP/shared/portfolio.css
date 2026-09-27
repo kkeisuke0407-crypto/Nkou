@@ -45,6 +45,10 @@
 .mt-h3__rank { display: inline-block; margin-right: .45em; padding: .05em .5em; border-radius: 3px; background: var(--mt-blue); color: #fff; font-size: .78em; line-height: 1.5; vertical-align: .12em; white-space: nowrap; }
 .mt-h3[id^="rank"] { margin-top: 2.4em; scroll-margin-top: 12px; }
 
+/* ---------- 比較表のロゴ（ユーザー提供の公式ロゴ。切り抜き・加工はせず、元の比率のまま） ---------- */
+.mt-table td.c1-logo-cell { min-width: 150px; }
+.c1-table-logo { display: block; width: 140px; max-width: 100%; height: auto; margin: 0 auto .3em; }
+
 /* ---------- ランキングTOP3一覧（mt-table）：375pxで横スクロールなしに収める ---------- */
 .c1-rank { min-width: 0; width: 100%; table-layout: fixed; font-size: 13px; }
 .c1-rank th, .c1-rank td { position: static; padding: .55em .45em; text-align: left; vertical-align: middle; border-color: var(--c1-line); }
