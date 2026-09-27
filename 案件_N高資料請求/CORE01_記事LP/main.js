@@ -4,10 +4,19 @@
 
   document.documentElement.classList.add("js");
 
+  /* ---------- CTAリンク（URLはここ1カ所で管理） ----------
+     資料請求のASP計測URLを CTA_URL に貼る。
+     data-cta が付いたリンクすべての href に、このURLを「そのまま」設定する。
+     ※ ?cta=fv のような独自パラメータは付けない（ASP URLは改変しない）。 */
+  var CTA_URL = "#"; // TODO: ここにASP計測URLを貼る
+
+  var links = document.querySelectorAll("a[data-cta]");
+  for (var i = 0; i < links.length; i++) links[i].setAttribute("href", CTA_URL);
+
   /* ---------- CTAクリック計測 ----------
-     ASP計測URLは各CTAの href にそのまま設定する（JSでURLは一切いじらない）。
-     クリック時に、ボタンの位置（data-cta）を計測ツールへ送るだけ。
-       - "dataLayer"：GTM経由で送る（GTMで「cta_click」イベントをトリガーにしてGA4へ）
+     クリック時に、ボタンの位置（data-cta）を計測ツールへ送る。
+     ASP URLの全文はAnalyticsに送らない（cta_position / cta_type / cta_text のみ）。
+       - "dataLayer"：GTM経由（GTMで「cta_click」イベントをトリガーにGA4へ）
        - "gtag"     ：gtag.js を直接使っている場合
      両方同時に送ると二重計測になるので、どちらか1つにする。 */
   var TRACKING_MODE = "dataLayer"; // "dataLayer" | "gtag"
@@ -15,10 +24,9 @@
 
   var track = function (a) {
     var params = {
-      cta_position: a.getAttribute("data-cta"), // fv / conclusion / timeline / check / final / sticky
+      cta_position: a.getAttribute("data-cta"), // fv / check / timeline / conclusion / final / sticky
       cta_type: a.getAttribute("data-cta-type") || "button",
-      cta_text: (a.textContent || "").replace(/\s+/g, " ").trim(),
-      link_url: a.href
+      cta_text: (a.textContent || "").replace(/\s+/g, " ").trim()
     };
     try {
       if (TRACKING_MODE === "gtag" && typeof window.gtag === "function") {
@@ -36,7 +44,7 @@
     var a = e.target.closest && e.target.closest("a[data-cta]");
     if (!a) return;
     track(a);
-    // ASP URLを入れる前（href="#"）の間だけ、ページ先頭へ飛ばないようにする
+    // CTA_URL 未設定（"#"）の間だけ、ページ先頭へ飛ばないようにする
     if (a.getAttribute("href") === "#") e.preventDefault();
   });
 
