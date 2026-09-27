@@ -106,20 +106,9 @@ b, strong { font-weight: 700; }
 .c1-table tbody th { position: sticky; left: 0; z-index: 1; background: #f3f5f8; font-weight: 700; color: var(--mt-blue); font-size: 12.5px; box-shadow: 1px 0 0 var(--c1-line); }
 .c1-table thead th:first-child { position: sticky; left: 0; z-index: 2; background: var(--mt-blue); }
 .c1-table tbody tr:last-child > * { border-bottom: 0; }
-/* 見出し行の学校画像：3校とも同じ正方形の枠。文字入りの公式バナーは切らない */
-.c1-table thead th img { display: block; width: 100%; max-width: 100%; height: auto; aspect-ratio: 1 / 1; margin: 0 0 .35em; border-radius: 6px; object-fit: cover; background: #fff; }
-.c1-table thead th .c1-th-img--banner { object-fit: contain; }
-.c1-table thead th .c1-th-img--clark { object-position: 50% 60%; }
-.c1-table thead th .c1-th-img--daiichi { object-position: 70% 50%; }
-.c1-table thead th span { display: block; }
-.c1-table thead th:first-child { vertical-align: bottom; }
-@media (min-width: 768px) { .c1-table thead th img { max-width: 170px; } }
-
-/* ③の行（今回の決め手）だけ強調。N高の列全体は強調しない */
+/* 「入学後の通い方の変更」の行を薄く強調（行全体。特定の学校の列だけは強調しない） */
 .c1-table tr.is-key td { background: var(--c1-pick); }
 .c1-table tr.is-key th { background: var(--c1-pick-strong); color: var(--mt-blue); }
-.c1-table tr.is-key td:nth-child(2) { box-shadow: inset 3px 0 0 var(--mt-blue); }
-.c1-table tr.is-key b { color: #13294a; font-weight: 800; }
 
 
 
@@ -287,8 +276,7 @@ b, strong { font-weight: 700; }
 .mt-cta__btn::after { display: none; } /* 光が走るアニメーションは使わない */
 .mt-cta__micro { font-weight: 700; color: #3a4656; }
 .mt-textlink a { color: var(--mt-blue-2); }
-.mt-oneline span { background: none; color: var(--mt-blue); }
-.mt-oneline.c1-oneline--key span { background: linear-gradient(transparent 55%, var(--mt-mark) 55%); color: #13294a; }
+.mt-oneline span { color: #13294a; } /* 背景の黄色マーカーは parts.css どおり */
 .mt-h2 { letter-spacing: .01em; }
 
 /* ============ パーツ集ベースの部品の調整（V3.6） ============ */
