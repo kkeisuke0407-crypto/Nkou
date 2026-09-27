@@ -45,6 +45,7 @@ b, strong { font-weight: 700; }
 .c1-fv { padding: 14px 0 4px; }
 .c1-fv__eyebrow { display: inline-block; margin: 0 0 10px !important; padding: .2em .7em; border-radius: 999px; background: var(--mt-blue-bg); color: var(--mt-blue); font-size: 12.5px; font-weight: 700; line-height: 1.6; }
 .c1-fv__title { margin: 0 0 10px; font-size: clamp(21px, 6.5vw, 26px); line-height: 1.5; font-weight: 900; letter-spacing: .01em; }
+.c1-fv__split + .c1-fv__lead { margin-top: 12px !important; } /* 導入文は写真の下に置く */
 .c1-fv__lead { margin: 0 0 14px !important; font-size: 15.5px; line-height: 1.75; }
 /* FV画像：SPは縦に2段。画像ごとに比率とトリミング位置を個別指定（横長の通学写真を正方形に押し込まない） */
 .c1-fv__split { position: relative; display: grid; grid-template-columns: 1fr; gap: 4px; margin: 0 0 8px; }
