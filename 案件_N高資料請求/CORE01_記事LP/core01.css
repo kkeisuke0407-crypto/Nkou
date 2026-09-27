@@ -89,28 +89,48 @@ b, strong { font-weight: 700; }
 .c1-axes li.is-key .c1-axes__no { background: var(--mt-blue-2); }
 
 /* ============ 3校比較（SPはカード。巨大テーブルにしない） ============ */
-.c1-schools { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 0 0 10px; }
-.c1-schools__item { padding: .6em .3em; border: 1px solid var(--c1-line); border-radius: 8px; background: #fff; text-align: center; line-height: 1.35; }
-.c1-schools__item b { display: block; font-size: 13.5px; word-break: keep-all; }
-.c1-schools__item span { display: block; margin-top: 2px; font-size: 10.5px; color: var(--mt-sub); }
-.c1-tip { margin: 0 0 .8em !important; font-size: 13px; color: #555; text-align: center; }
 
-.c1-cmp { display: grid; gap: 12px; margin: 0 0 .8em; }
-.c1-cmp__card { border: 1px solid var(--c1-line); border-radius: 10px; background: #fff; overflow: hidden; box-shadow: var(--c1-shadow); }
-.c1-cmp__axis { display: flex; align-items: center; gap: .5em; margin: 0; padding: .55em .8em; background: var(--mt-blue); color: #fff; font-size: 15.5px; line-height: 1.4; }
-.c1-cmp__axis span { display: grid; place-items: center; flex: none; width: 1.6em; height: 1.6em; border-radius: 50%; background: #fff; color: var(--mt-blue); font-size: 13px; font-weight: 900; }
-.c1-cmp__card.is-key { border: 2px solid var(--mt-blue-2); }
-.c1-cmp__card.is-key .c1-cmp__axis { background: var(--mt-blue-2); }
-.c1-cmp__flag { margin: 0 !important; padding: .3em .8em; background: #e3ecf7; color: var(--mt-blue-2); font-size: 12.5px; font-weight: 700; line-height: 1.5; }
-.c1-cmp__card.is-key .c1-cmp__axis span { color: var(--mt-blue-2); }
-.c1-cmp__card dl { margin: 0; }
-.c1-cmp__card dl > div { display: grid; grid-template-columns: 5.2em 1fr; gap: .6em; padding: .6em .8em; border-top: 1px solid var(--c1-line); }
-.c1-cmp__card dl > div:first-child { border-top: 0; }
-.c1-cmp__card dt { font-size: 13px; font-weight: 700; color: #555; line-height: 1.55; }
-.c1-cmp__card dd { margin: 0; font-size: 14px; line-height: 1.6; }
-.c1-cmp__card dl > div.is-pick { background: var(--c1-pick); }
-.c1-cmp__card dl > div.is-pick dt { color: var(--mt-blue); }
-.c1-cmp__card--who dd b { font-weight: 700; }
+
+/* ============ 3校比較表（parts.css の mt-scroll / mt-table をベースに調整） ============ */
+/* スクロールの案内：絵文字は使わず文字だけにする */
+.c1-hint { margin: 0 0 .4em !important; text-align: left; font-size: 12.5px !important; color: #4a5566; }
+.c1-hint::before { content: none; }
+.c1-hint::after { content: " →"; margin: 0; }
+/* 右端に影を出して「続きがある」ことを見せる。最後まで動かすと消える */
+.c1-scroll { position: relative; margin: 0 0 .6em; border: 1px solid var(--c1-line); border-radius: 8px;
+  background: linear-gradient(90deg, #fff 30%, rgba(255,255,255,0)) left center / 24px 100% no-repeat local,
+              linear-gradient(270deg, #fff 30%, rgba(255,255,255,0)) right center / 24px 100% no-repeat local,
+              radial-gradient(farthest-side at 100% 50%, rgba(20,40,80,.18), rgba(20,40,80,0)) right center / 14px 100% no-repeat scroll; }
+.c1-scroll:focus-visible { outline: 3px solid #ffbf47; outline-offset: 2px; }
+.c1-table { min-width: 0; width: 556px; table-layout: fixed; font-size: 13px; line-height: 1.5; background: transparent; }
+.c1-table th, .c1-table td { padding: .55em .55em; border: 0; border-bottom: 1px solid var(--c1-line); text-align: left; vertical-align: top; }
+.c1-table td { background: rgba(255,255,255,.92); }
+.c1-table tr > * + * { border-left: 1px solid var(--c1-line); }
+.c1-table thead th { background: var(--mt-blue); color: #fff; font-size: 12.5px; white-space: normal; border-bottom: 0; }
+.c1-table th:first-child, .c1-table td:first-child { width: 96px; min-width: 0; }
+.c1-table tbody th { position: sticky; left: 0; z-index: 1; background: #f3f5f8; font-weight: 700; color: var(--mt-blue); font-size: 12.5px; box-shadow: 1px 0 0 var(--c1-line); }
+.c1-table thead th:first-child { position: sticky; left: 0; z-index: 2; background: var(--mt-blue); }
+.c1-table tbody tr:last-child > * { border-bottom: 0; }
+/* ③の行だけ薄く強調（N高の列全体は強調しない） */
+.c1-table tr.is-key td { background: var(--c1-pick); }
+.c1-table tr.is-key th { background: #efe6c8; }
+.c1-table tr.is-key b { color: var(--mt-blue); }
+
+/* ③の詳細カード */
+.c1-keycard { margin: 0 0 1em; border: 2px solid var(--mt-blue-2); border-radius: 10px; background: #fff; overflow: hidden; }
+.c1-keycard dl { margin: 0; }
+.c1-keycard dl > div { display: grid; grid-template-columns: 5.2em 1fr; gap: .6em; padding: .6em .8em; border-top: 1px solid var(--c1-line); }
+.c1-keycard dl > div:first-child { border-top: 0; }
+.c1-keycard dt { font-size: 13px; font-weight: 700; color: #555; line-height: 1.55; }
+.c1-keycard dd { margin: 0; font-size: 14px; line-height: 1.6; }
+.c1-keycard .is-pick { background: var(--c1-pick); }
+.c1-keycard .is-pick dt { color: var(--mt-blue); }
+
+@media (min-width: 768px) {
+  .c1-table { width: 100%; }
+  .c1-table th:first-child, .c1-table td:first-child { width: 130px; }
+  .c1-hint { display: none; }
+}
 
 /* ============ 結論 ============ */
 
@@ -272,10 +292,6 @@ b, strong { font-weight: 700; }
   .c1-figure img, .c1-img-mentor { max-width: 540px; margin-inline: auto; }
   .c1-axes { grid-template-columns: 1fr 1fr; }
   .c1-axes li.is-key { grid-column: 1 / -1; }
-  .c1-cmp__card dl { display: grid; grid-template-columns: repeat(3, 1fr); }
-  .c1-cmp__card dl > div { display: block; border-top: 0; border-left: 1px solid var(--c1-line); }
-  .c1-cmp__card dl > div:first-child { border-left: 0; }
-  .c1-cmp__card dt { margin-bottom: .2em; }
     .c1-docs { grid-template-columns: 220px 1fr; }
   .c1-docs__img { width: 100%; max-width: 100%; }
   .c1-final { margin-left: 0; margin-right: 0; border-radius: 12px; }
