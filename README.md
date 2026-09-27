@@ -29,3 +29,6 @@ Claude初稿指示：
 - CORE01 記事LP（HTML/CSS/JS）：`案件_N高資料請求/CORE01_記事LP/index.html`
   - 公開URL：https://nko.hakobu-family.com/ （`main` へのpushで `.github/workflows/pages.yml` がLPのファイルだけをGitHub Pagesへデプロイ）
   - 実装メモ・使用画像一覧・3つの壁チェック・ABテスト案：`案件_N高資料請求/CORE01_記事LP/IMPLEMENTATION_NOTES.md`
+- 橋掛けLP（検索意図別の冒頭＋CORE01共通本文）：`案件_N高資料請求/橋掛けLP/`（README参照）
+  - CP02 学費 /nkou/fee/ ・ CP01 王道 /nkou/compare/ ・ CP04 選び方 /nkou/select/（CP03 競合KWは設計のみ）
+
