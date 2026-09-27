@@ -32,6 +32,7 @@ node 案件_N高資料請求/橋掛けLP/build.mjs   # CORE01 や fv.html を変
 - ASP計測URLは `../CORE01_記事LP/main.js` の `CTA_URL` 1カ所だけ。全LPの全CTAにそのまま入る（独自パラメータは付けない）。
 - クリックは `cta_click` イベントで dataLayer / gtag へ。パラメータは `lp_id`（core01 / cp01_compare / cp02_fee / cp04_select）・`cta_position`・`cta_type`・`cta_text`。ASP URLの全文は送らない。
 - 流入CPの識別は当サイトのページURL（/nkou/fee/ など）と `lp_id` で行う。
+- **GTM / GA4のタグはまだどのページにも入っていない**（dataLayerにpushされるだけで、Analyticsには届かない）。配信前にGTMを入れ、`cta_click` をトリガーに `lp_id × cta_position` をGA4へ送る設定をする。
 
 ## 検索結果の扱い
 
