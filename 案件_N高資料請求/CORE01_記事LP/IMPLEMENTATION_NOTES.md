@@ -279,3 +279,14 @@ Nkouの README ではStage8・Stage9・調査・画像素材を移管済みと�
 - 「N高が候補に残った理由」冒頭の結論BOXは③カードと同じ内容になるため削除。
 - 導線：比較一覧表 → ③の詳細 → 自分ごとチェック。橋掛けLP（CP01/CP02/CP04）は `build.mjs` でCORE01から組み立て直しているので、同じ表に置き換わっている。
 
+### V3.3 比較表と最終CTAに画像を追加
+| ファイル | 配置 | 出典・ライセンス | 表示 |
+|---|---|---|---|
+| `nkou_banner_chu3_250.png` | 比較表「学校のようす」行のN高列／最終CTAの見出し下 | ユーザー提供のN高等学校バナー（250×250。「やりたいことを見つけたい中学3年生へ 多彩で自由な学びのかたち」） | 文字入りなので `contain` で切らない |
+| `clark_campus_sapporo_shiroishi_ccbysa.webp` | 比較表「学校のようす」行のクラーク列 | Wikimedia Commons「Clark Memorial International High School Sapporo Shiroishi Campus.jpg」撮影：禁樹なずな／CC BY-SA 4.0。640pxに縮小 | 正方形にトリミング（看板が入る位置） |
+| `daiichi_campus_yabu_ccbysa.webp` | 比較表「学校のようす」行の第一学院列 | Wikimedia Commons「Daiichi Gakuin high school Yabu campus.jpg」撮影：KASEI（2012年10月）／CC BY-SA 3.0。640pxに縮小 | 正方形にトリミング（ロゴと校名表示が入る位置） |
+
+- CC BY-SAの表示義務として、比較表の注記に作者・ライセンス（リンク）・出典・「縮小・トリミングして使用」を記載。出典一覧にも追記。
+- 競合校の公式サイトの画像は使っていない（転載許諾がないため）。
+- N高バナーがA8の広告素材の場合、A8の規約でバナーはA8発行のタグ（計測付き）での掲載を求められることがある。A8の広告素材を使う場合は、発行タグへの差し替えを確認すること。
+
