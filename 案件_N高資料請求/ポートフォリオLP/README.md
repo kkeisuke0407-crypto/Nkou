@@ -8,6 +8,7 @@
 | `CP01_王道ランキング/` | ジャンル王道（比較表→ランキング） | 比較・おすすめ・ランキング・どこがいい | /nkou/compare/（/pf/cp01/） | pf_cp01_ranking |
 | `CP02_その他ジャンル/fee/` | その他ジャンル（答え→比較→ランキング） | 学費・費用・授業料 | /nkou/fee/（/pf/cp02-fee/） | pf_cp02_fee |
 | `CP03_競合/` | 競合KW（設計のみ） | 学校名＋学費／口コミ | — | — |
+| `サイト情報/about/`・`privacy/`・`contact/` | サイト情報ページ（運営者情報・編集方針・広告について／プライバシーポリシー／お問い合わせ） | — | /about/・/privacy/・/contact/（index, follow。/pf/ には出さない） | site_* |
 | `CP04_インテント/schooling/` | インテント（答え→N高単品） | スクーリングとは・スクーリング 少ない | /nkou/select/（/pf/cp04-schooling/） | pf_cp04_schooling |
 
 URLは https://nko.hakobu-family.com/ の下。どれも `noindex`。
@@ -33,6 +34,7 @@ URLは https://nko.hakobu-family.com/ の下。どれも `noindex`。
 | `nkou-fee-table.html` | 初年度の実質負担モデル表（支援金注記つき） | CP01・CP02 |
 | `why-now.html` | 出願期間・学校選びの流れ・資料で見るところ | CP01・CP02 |
 | `pr.html` | 冒頭のPR表記「PR｜広告を含みます」（A8・広告主の文言指定があればここ1カ所を差し替え） | 全LP |
+| `site-footer.html` | サイト共通フッター（媒体の説明＋「高校えらびノート｜運営者情報｜プライバシーポリシー｜お問い合わせ」）。CORE01のフッターも同じ内容 | 全ページ |
 | `final-cta.html` / `header.html` / `footer.html` | 最終CTA、サイト名帯、フッター・SP固定CTA・main.js | 全LP |
 
 ## 更新手順

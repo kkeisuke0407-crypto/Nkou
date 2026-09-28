@@ -65,8 +65,7 @@ const render = (pageDir, { core, shared }) => {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(meta.title)}</title>
 <meta name="description" content="${esc(meta.description)}">
-<!-- 広告の着地用LP。検索結果には出さない -->
-<meta name="robots" content="noindex, follow">
+<meta name="robots" content="${meta.robots || "noindex, follow"}">
 <link rel="stylesheet" href="{{core}}parts.css">
 <link rel="stylesheet" href="{{shared}}portfolio.css">
 </head>
@@ -102,7 +101,8 @@ if (deployIdx >= 0) {
   for (const dir of pages) {
     const { meta } = render(dir, { core: "", shared: "" });
     // 公開パス：/pf/<slug>/ に加えて、page.json の publishAs（例："nkou/compare"）にも同じページを書き出す
-    for (const path of [`pf/${meta.slug}`, ...(meta.publishAs || [])]) {
+    // pf: false のページ（/about/ などのサイト情報ページ）は /pf/ に出さない
+    for (const path of [...(meta.pf === false ? [] : [`pf/${meta.slug}`]), ...(meta.publishAs || [])]) {
       const up = "../".repeat(path.split("/").length);
       const dest = join(out, ...path.split("/"));
       mkdirSync(dest, { recursive: true });

@@ -29,6 +29,7 @@ Claude初稿指示：
 - CORE01 記事LP（HTML/CSS/JS）：`案件_N高資料請求/CORE01_記事LP/index.html`
   - 公開URL：https://nko.hakobu-family.com/ （`main` へのpushで `.github/workflows/pages.yml` がLPのファイルだけをGitHub Pagesへデプロイ）
   - 実装メモ・使用画像一覧・3つの壁チェック・ABテスト案：`案件_N高資料請求/CORE01_記事LP/IMPLEMENTATION_NOTES.md`
+- サイト情報ページ：/about/（運営者情報・編集方針・広告について）・/privacy/・/contact/（`案件_N高資料請求/ポートフォリオLP/サイト情報/`）。全ページのフッターからリンク
 - 橋掛けLP（旧設計・公開停止）：`案件_N高資料請求/橋掛けLP/`
 
 - ポートフォリオLP（Stage12・ポートフォリオごとに骨格を変える新設計）：`案件_N高資料請求/ポートフォリオLP/`（README参照）
